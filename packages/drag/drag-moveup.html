@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>手动实现拽</title>
+        <style>
+            .move {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="move-container">
+            <div class="move"></div>
+        </div>
+        <script>
+            let ele = document.querySelector(".move");
+            let dragging = false;
+            let trans, portrait; // 鼠标点击位置在移动元素中的位置
+
+            document.addEventListener("mousedown", function (e) {
+                if (e.target == ele) {
+                    dragging = true;
+                    let elemRect = ele.getBoundingClientRect(); // 选中元素相对边界的距离
+                    trans = e.clientX - elemRect.left; // 鼠标点击的距离
+                    portrait = e.clientY - elemRect.top;
+                }
+            });
+
+            document.addEventListener("mouseup", function (e) {
+                dragging = false;
+            });
+
+            document.addEventListener("mousemove", function (e) {
+                if (dragging) {
+                    var moveX = e.clientX - trans;
+                    let moveY = e.clientY - portrait;
+
+                    ele.style.left = moveX + "px";
+                    ele.style.top = moveY + "px";
+                }
+            });
+        </script>
+    </body>
+</html>

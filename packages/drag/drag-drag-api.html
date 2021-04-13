@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>手动实现拽</title>
+        <style>
+            .main {
+                display: flex;
+                justify-content: space-around;
+            }
+            .left {
+                width: 300px;
+                height: 500px;
+                margin-right: 10px;
+                border: 1px solid red;
+                text-align: center;
+                box-sizing: border-box;
+                padding: 1px;
+            }
+            .right {
+                width: 300px;
+                height: 500px;
+                border: 1px solid lightseagreen;
+                text-align: center;
+                box-sizing: border-box;
+                padding: 1px;
+            }
+
+            .txt {
+                border: 1px solid gray;
+                margin: 1px;
+                padding: 5px;
+                cursor: move;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="main">
+            <div class="left" id="left">
+                <div class="text-show">左边区域</div>
+                <div class="dragable txt txt1" id="txt1" draggable="true">
+                    可移动的文字1
+                </div>
+                <div class="dragable txt txt2" id="txt2" draggable="true">
+                    可移动的文字2
+                </div>
+                <div class="dragable txt txt3" id="txt3" draggable="true">
+                    可移动的文字3
+                </div>
+                <div class="dragable txt txt4" id="txt4" draggable="true">
+                    可移动的文字4
+                </div>
+                <div class="dragable txt txt5" id="txt5" draggable="true">
+                    可移动的文字5
+                </div>
+            </div>
+            <div class="right" id="right">
+                <div class="txt-show">右边区域</div>
+            </div>
+        </main>
+        <script>
+            let txtObj = document.getElementsByClassName("txt");
+
+            for (let i = 0; i < txtObj.length; i++) {
+                txtObj[i].ondragstart = handle_start;
+                txtObj[i].ondrag = handle_drag;
+                txtObj[i].ondragend = handle_end;
+            }
+
+            function handle_start(e) {
+                e.dataTransfer.setData("Text", e.target.id);
+                console.log("handle_start-拖动开始");
+            }
+
+            function handle_drag(e) {
+                console.log("handle_start-拖动中");
+            }
+
+            function handle_end(e) {
+                console.log("handle_start-拖动结束");
+            }
+
+            let target = document.getElementById("right");
+
+            target.ondragenter = handle_enter;
+            target.ondragover = handle_over;
+            target.ondragleave = handle_leave;
+            target.ondrop = handle_drop;
+
+            function handle_enter(e) {
+                e.preventDefault();
+                console.log("handle_enter-进入目的地");
+            }
+
+            function handle_over(e) {
+                e.preventDefault();
+                let returnObj = e.dataTransfer.getData("Text");
+                console.log(returnObj + "-handle_over-在目的地范围");
+            }
+
+            function handle_leave(e) {
+                e.preventDefault();
+                let returnObj = e.dataTransfer.getData("Text");
+                console.log(returnObj + "-handle_leave-没有放下就离开目的地");
+            }
+
+            function handle_drop(e) {
+                e.stopPropagation(); // 不再派发事件。解决Firefox浏览器，打开新窗口的问题。
+                e.preventDefault();
+                let returnObj = e.dataTransfer.getData("Text");
+                if (returnObj) {
+                    e.target.appendChild(document.getElementById(returnObj));
+                }
+                console.log(returnObj + "-handle_drop-在目的地释放");
+            }
+        </script>
+    </body>
+</html>
