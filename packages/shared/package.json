@@ -1,0 +1,10 @@
+{
+  "name": "@learn/shared",
+  "main": "index.js",
+  "module": "dist/learn.esm-bundler.js",
+  "types": "dist/learn.d.ts",
+  "version": "0.0.1",
+  "buildOptions": {
+    "formats": [ "esm-bundler", "cjs" ]
+  }
+}

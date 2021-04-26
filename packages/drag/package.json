@@ -1,0 +1,12 @@
+{
+  "name": "drag",
+  "private": true,
+  "version": "1.0.0",
+  "description": "https://www.zhangxinxu.com/wordpress/2018/09/drag-drop-datatransfer-js/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

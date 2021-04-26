@@ -1,12 +1,19 @@
 {
-    "name": "promise-all",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "promise-all",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "buildOptions": {
+    "name": "PromiseAll",
+    "formats": [ "cjs" ]
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@learn/shared": "0.0.1"
+  }
 }

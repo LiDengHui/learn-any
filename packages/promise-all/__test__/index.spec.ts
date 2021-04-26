@@ -1,4 +1,4 @@
-import { promiseAll } from "./index";
+import { promiseAll } from "../src/index";
 
 describe("promise-all", () => {
     // var promiseAll = Promise.all.bind(Promise);
