@@ -1,0 +1,13 @@
+{
+  "name": "@learn/vue3-patch",
+  "main": "src/index.js",
+  "module": "dist/vue3-patch.esm-bundler.js",
+  "types": "dist/vue3-patch.d.ts",
+  "version": "0.0.1",
+  "buildOptions": {
+    "formats": [
+      "esm-bundler",
+      "cjs"
+    ]
+  }
+}
