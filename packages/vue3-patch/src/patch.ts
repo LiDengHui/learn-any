@@ -103,15 +103,15 @@ export const patchKeyedChildren = (arrA: Node[], arrB: Node[]) => {
 
         // 从后向前遍历 新Index对应旧的Index，newIndexToOldIndexMap， increasingNewIndexSequence，
         for (let i = toBePatched - 1; i > 0; i--) {
-            console.log(i)
             // 新的节点Index没有找到对应的旧的节点， 所以当前为新的节点
+
             if (newIndexToOldIndexMap[i] === 0) {
-                console.log('挂载当前节点2', '新节点在当前位置', i, arrB[i + startB])
+                console.log('挂载当前节点2', '新节点在当前位置', i + startB, arrB[i + startB])
             } else if (moved) {
                 // 如果在最大递增子序列中没有找到，说明当前节点在递增子序列之间存在节点，需要插入
                 // 如果在最大递增子序列遍历完成后，新增的节点依然没有遍历完成，说明要在 对头插入节点
                 if (j < 0 || i !== increasingNewIndexSequence[j]) {
-                    console.log('移动当前节点1', i, arrB[i + startB], '=>', j, '前')
+                    console.log('移动当前节点1', i, arrB[i + startB], '=>', i + startB, '前')
                 } else {
                     j--
                 }
